@@ -1,12 +1,12 @@
 package event.event_microservice.models;
 
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
-import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -25,8 +25,15 @@ public class Subscription implements Serializable {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    private String participantEmail;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonProperty(access = Access.WRITE_ONLY)
-    @JoinColumn(name = "id_event", referencedColumnName = "id")
+    @JoinColumn(name = "idEvent", referencedColumnName = "id")
     private Event event;
+
+    public Subscription(Event event, String participantEmail) {
+        this.event = event;
+        this.participantEmail = participantEmail;
+    }
 }

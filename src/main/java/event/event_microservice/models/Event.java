@@ -1,5 +1,6 @@
 package event.event_microservice.models;
 
+import event.event_microservice.dtos.EventDto;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,4 +36,11 @@ public class Event implements Serializable {
     private int maxCapacity;
 
     private LocalDateTime data;
+
+    public Event(EventDto dto) {
+        this.title = dto.title();
+        this.description = dto.description();
+        this.maxCapacity = dto.maxCapacity();
+        this.data = dto.date();
+    }
 }
