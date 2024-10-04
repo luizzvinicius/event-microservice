@@ -33,7 +33,7 @@ public class Event implements Serializable {
 
     private String description;
 
-    private int maxCapacity;
+    private Integer maxCapacity;
 
     private LocalDateTime data;
 
