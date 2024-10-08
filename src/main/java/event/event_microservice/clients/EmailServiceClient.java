@@ -1,7 +1,8 @@
-package event.event_microservice.services;
+package event.event_microservice.clients;
 
 import event.event_microservice.dtos.EmailRequestDto;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -10,4 +11,7 @@ public interface EmailServiceClient {
 
     @PostMapping
     void sendMail(@RequestBody EmailRequestDto body);
+
+    @GetMapping
+    String getMessage();
 }

@@ -1,5 +1,6 @@
 package event.event_microservice.services;
 
+import event.event_microservice.clients.EmailServiceClient;
 import event.event_microservice.exceptions.EventFullException;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;

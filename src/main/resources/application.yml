@@ -2,8 +2,8 @@ logging:
   level:
     event:
       event_microservice:
-        services:
-          EmailServiceClient: DEBUG
+        clients.*: DEBUG
+
 
 spring:
   output:

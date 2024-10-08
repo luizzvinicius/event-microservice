@@ -1,5 +1,7 @@
 package event.event_microservice.controllers;
 
+import event.event_microservice.clients.EmailServiceClient;
+import org.bouncycastle.asn1.ocsp.ResponderID;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.constraints.Max;
 import event.event_microservice.models.Event;
@@ -16,9 +18,11 @@ import java.util.UUID;
 @RequestMapping("/api/event")
 public class EventsController {
     private final EventService eventService;
+    private final EmailServiceClient emailServiceClient;
 
-    public EventsController(EventService eventService) {
+    public EventsController(EventService eventService, EmailServiceClient emailServiceClient) {
         this.eventService = eventService;
+        this.emailServiceClient = emailServiceClient;
     }
 
     @PostMapping
@@ -45,5 +49,11 @@ public class EventsController {
                                                          @RequestParam(defaultValue = "8") @PositiveOrZero @Max(16) int size) {
         var events = eventService.getUpcomingEvents(p, size);
         return ResponseEntity.ok(events);
+    }
+
+    @GetMapping("/teste")
+    public ResponseEntity<String> teste() {
+        var message = emailServiceClient.getMessage();
+        return ResponseEntity.ok(message);
     }
 }
