@@ -6,8 +6,20 @@ spring:
     driver-class-name: "org.h2.Driver"
     username: sa
     password:
-  jpa:
-    database-platform: "org.hibernate.dialect.H2Dialect"
   h2:
     console:
       enabled: true
+  jpa:
+    open-in-view: false
+  cloud:
+    openfeign:
+      client:
+        config:
+          default:
+            connectTimeout: 5000
+            readTimeout: 5000
+            loggerLevel: basic
+
+email-service-client:
+  name: email-service-client
+  url: localhost:8081/api/email
