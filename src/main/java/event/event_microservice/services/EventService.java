@@ -1,6 +1,7 @@
 package event.event_microservice.services;
 
 import event.event_microservice.exceptions.EventFullException;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 import event.event_microservice.dtos.EventDto;
 import event.event_microservice.dtos.EmailRequestDto;
@@ -14,6 +15,7 @@ import event.event_microservice.repositories.SubscriptionRepository;
 import java.util.UUID;
 import java.util.List;
 
+@Log4j2
 @Service
 public class EventService {
     private final EmailServiceClient emailServiceClient;
