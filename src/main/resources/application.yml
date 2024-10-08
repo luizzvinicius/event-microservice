@@ -1,3 +1,10 @@
+logging:
+  level:
+    event:
+      event_microservice:
+        services:
+          EmailServiceClient: DEBUG
+
 spring:
   output:
     ansi:
