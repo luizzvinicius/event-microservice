@@ -4,7 +4,6 @@ logging:
       event_microservice:
         clients.*: DEBUG
 
-
 spring:
   output:
     ansi:
@@ -23,6 +22,8 @@ spring:
     open-in-view: false
   cloud:
     openfeign:
+      circuitbreaker:
+        enabled: true
       client:
         config:
           default:
