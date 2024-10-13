@@ -9,12 +9,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @FeignClient(
         name = "${email-service-client.name}",
-        url = "${email-service-client.url}",
         fallback = EventFallBack.class
 )
 public interface EmailServiceClient {
 
-    @PostMapping
+    @PostMapping("/api/email")
     void sendMail(@RequestBody EmailRequestDto body);
 
     @GetMapping

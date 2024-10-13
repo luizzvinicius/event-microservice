@@ -32,5 +32,11 @@ spring:
             loggerLevel: basic
 
 email-service-client:
-  name: email-service-client
-  url: localhost:8081/api/email
+  name: email-sender
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
